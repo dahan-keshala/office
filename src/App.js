@@ -1,28 +1,46 @@
-import Card from "./components/class/Card";
-import Navbar from "./components/class/Navbar";
-import Sidebar from "./components/class/Sidebar";
-import Button from "./components/functional/Button";
-import Footer from "./components/functional/Footer";
-import Header from "./components/functional/Header";
+import { useState } from "react";
+import TodoForm from "./components/TodoForm";
+import TodoLIts from "./components/TodoLIts";
+import "./App.css";
 
-function App() {
-  const handleButtonCLick = () => {
-    alert("Button clicked!");
+const App = () => {
+  const [todos, setTodos] = useState([]);
+
+  const addTodo = (text) => {
+    const newTodo = {
+      id: Date.now(),
+      text,
+      completed: false,
+    };
+
+    setTodos([newTodo, ...todos]);
+    console.log(todos);
   };
 
+  const toggleComplete = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  };
+
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
   return (
     <>
-      <Header />
-      <Navbar />
-      <Sidebar />
-      <main>
-        <h1> Welcome to My Appilication</h1>
-        <Card titel="Card Titel" content="this is a card component." />
-        <Button onclick={handleButtonCLick} label="Click Me" />
-      </main>
-      <Footer />
+      <div className="app">
+        <h1>Todo List</h1>
+        <TodoForm addTodo={addTodo} />
+        <TodoLIts
+          todos={todos}
+          toggleComplete={toggleComplete}
+          deleteTodo={deleteTodo}
+        />
+      </div>
     </>
   );
-}
+};
 
 export default App;

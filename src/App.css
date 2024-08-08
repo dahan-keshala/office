@@ -1,0 +1,47 @@
+/* src/App.css */
+.app {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.todo-list {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+}
+
+.todo-item input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.todo-item button {
+  background: red;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.todo-item button:hover {
+  background: darkred;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+form input {
+  padding: 8px;
+  width: 200px;
+}
+
+form button {
+  padding: 8px;
+}
